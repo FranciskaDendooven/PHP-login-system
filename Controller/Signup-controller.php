@@ -2,18 +2,19 @@
 
 class SignupController
 {
-
     private $usr;
     private $pwd;
     private $pwdRepeat;
     private $email;
+    private DatabaseManager $databaseManager;
 
-    public function __construct($usr, $pwd, $pwdRepeat, $email)
+    public function __construct($usr, $pwd, $pwdRepeat, $email, DatabaseManager $databaseManager)
     {
         $this->usr = $usr;
         $this->pwd = $pwd;
         $this->pwdRepeat = $pwdRepeat;
         $this->email = $email;
+        $this->databaseManager = $databaseManager;
     }
 
     private function emptyInput()
@@ -45,6 +46,18 @@ class SignupController
         } else {
             $result = true;
         }
+        return $result;
+    }
+
+    private function pwdMatch()
+    {
+        $result = '';
+        if($this->pwd !== $this->pwdRepeat){
+            $return = false;
+        } else {
+            $return = true;
+        }
+
         return $result;
     }
 

@@ -10,9 +10,9 @@ if (isset($_POST['submit'])) {
     //Instantiate signupController class
 
     include "../Models/Signup.php";
-    include "../Models/Signup-controller.php";
+    include "../Controller/Signup-controller.php";
 
-    $signup = new SignupController($usr, $pwd, $pwdRepeat, $email);
+    $signup = new SignupController($usr, $pwd, $pwdRepeat, $email, $databaseManager);
 
     
 
